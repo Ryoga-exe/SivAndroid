@@ -21,3 +21,4 @@ dependencyResolutionManagement {
 
 rootProject.name = "Siv3D-Test"
 include(":app")
+include(":siv3d")
