@@ -36,6 +36,16 @@ android {
             version = "3.22.1"
         }
     }
+    buildFeatures {
+        prefab = true
+        prefabPublishing = true
+    }
+    prefab {
+        create("siv3d") {
+            headers = "../../Siv3D/include"
+//            libraryName = "siv3d"
+        }
+    }
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_11
         targetCompatibility = JavaVersion.VERSION_11
@@ -50,6 +60,7 @@ dependencies {
     implementation(libs.androidx.appcompat)
     implementation(libs.material)
     testImplementation(libs.junit)
+    implementation(libs.androidx.games.activity)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
 }

@@ -1,6 +1,6 @@
 #include "Shader.h"
 
-#include "AndroidOut.h"
+// #include "AndroidOut.h"
 #include "Model.h"
 #include "Utility.h"
 
@@ -39,7 +39,7 @@ Shader *Shader::loadShader(
             if (logLength) {
                 GLchar *log = new GLchar[logLength];
                 glGetProgramInfoLog(program, logLength, nullptr, log);
-                aout << "Failed to link program with:\n" << log << std::endl;
+                // aout << "Failed to link program with:\n" << log << std::endl;
                 delete[] log;
             }
 
@@ -96,7 +96,7 @@ GLuint Shader::loadShader(GLenum shaderType, const std::string &shaderSource) {
             if (infoLength) {
                 auto *infoLog = new GLchar[infoLength];
                 glGetShaderInfoLog(shader, infoLength, nullptr, infoLog);
-                aout << "Failed to compile with:\n" << infoLog << std::endl;
+                // aout << "Failed to compile with:\n" << infoLog << std::endl;
                 delete[] infoLog;
             }
 

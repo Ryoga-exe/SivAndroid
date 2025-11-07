@@ -1,36 +1,25 @@
-# For more information about using CMake with Android Studio, read the
-# documentation: https://d.android.com/studio/projects/add-native-code.html
-
 cmake_minimum_required(VERSION 3.22.1)
+project(test CXX)
+set(CMAKE_CXX_STANDARD 20)
 
-project("test")
+find_package(siv3d REQUIRED CONFIG)
+find_package(game-activity REQUIRED CONFIG)  # 明示しておくと安全
 
-# Creates your game shared library. The name must be the same as the
-# one used for loading in your Kotlin/Java or AndroidManifest.txt files.
-add_library(test SHARED
-        main.cpp
-        AndroidOut.cpp
-        Renderer.cpp
-        Shader.cpp
-        TextureAsset.cpp
-        Utility.cpp)
+add_library(test SHARED main.cpp)
 
-# Searches for a package provided by the game activity dependency
-find_package(game-activity REQUIRED CONFIG)
-
-# Forces the linker to keep the JNI entry point for GameActivity
-set(CMAKE_SHARED_LINKER_FLAGS
-        "${CMAKE_SHARED_LINKER_FLAGS} -u Java_com_google_androidgamesdk_GameActivity_initializeNativeCode")
-
-# Configure libraries CMake uses to link your target library.
-target_link_libraries(test
-        # The game activity
-        game-activity::game-activity_static
-
-        # EGL and other dependent libraries required for drawing
-        # and interacting with Android system
+target_link_libraries(test PRIVATE
+        siv3d::siv3d
+        game-activity::game-activity_static  # 伝播してても明示推奨
+        android
+        log
         EGL
         GLESv3
         jnigraphics
-        android
-        log)
+        ${CMAKE_DL_LIBS}                      # 念のため（dlsym 等）
+)
+
+# GameActivity の JNI 初期化関数 & あなたの android_main を“必ず残す”
+target_link_options(test PRIVATE
+        "-uJava_com_google_androidgamesdk_GameActivity_initializeNativeCode"
+        "-uandroid_main"
+)

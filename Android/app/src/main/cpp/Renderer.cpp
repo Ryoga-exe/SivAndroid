@@ -6,7 +6,7 @@
 #include <vector>
 #include <android/imagedecoder.h>
 
-#include "AndroidOut.h"
+// #include "AndroidOut.h"
 #include "Shader.h"
 #include "Utility.h"
 #include "TextureAsset.h"
@@ -184,15 +184,15 @@ void Renderer::initRenderer() {
                     && eglGetConfigAttrib(display, config, EGL_BLUE_SIZE, &blue)
                     && eglGetConfigAttrib(display, config, EGL_DEPTH_SIZE, &depth)) {
 
-                    aout << "Found config with " << red << ", " << green << ", " << blue << ", "
-                         << depth << std::endl;
+                    // aout << "Found config with " << red << ", " << green << ", " << blue << ", "
+                    //     << depth << std::endl;
                     return red == 8 && green == 8 && blue == 8 && depth == 24;
                 }
                 return false;
             });
 
-    aout << "Found " << numConfigs << " configs" << std::endl;
-    aout << "Chose " << config << std::endl;
+    //aout << "Found " << numConfigs << " configs" << std::endl;
+    //aout << "Chose " << config << std::endl;
 
     // create the proper window surface
     EGLint format;
@@ -215,10 +215,10 @@ void Renderer::initRenderer() {
     width_ = -1;
     height_ = -1;
 
-    PRINT_GL_STRING(GL_VENDOR);
-    PRINT_GL_STRING(GL_RENDERER);
-    PRINT_GL_STRING(GL_VERSION);
-    PRINT_GL_STRING_AS_LIST(GL_EXTENSIONS);
+    //PRINT_GL_STRING(GL_VENDOR);
+    //PRINT_GL_STRING(GL_RENDERER);
+    //PRINT_GL_STRING(GL_VERSION);
+    //PRINT_GL_STRING_AS_LIST(GL_EXTENSIONS);
 
     shader_ = std::unique_ptr<Shader>(
             Shader::loadShader(vertex, fragment, "inPosition", "inUV", "uProjection"));
@@ -305,7 +305,7 @@ void Renderer::handleInput() {
         // Find the pointer index, mask and bitshift to turn it into a readable value.
         auto pointerIndex = (action & AMOTION_EVENT_ACTION_POINTER_INDEX_MASK)
                 >> AMOTION_EVENT_ACTION_POINTER_INDEX_SHIFT;
-        aout << "Pointer(s): ";
+        //aout << "Pointer(s): ";
 
         // get the x and y position of this event if it is not ACTION_MOVE.
         auto &pointer = motionEvent.pointers[pointerIndex];
@@ -316,8 +316,8 @@ void Renderer::handleInput() {
         switch (action & AMOTION_EVENT_ACTION_MASK) {
             case AMOTION_EVENT_ACTION_DOWN:
             case AMOTION_EVENT_ACTION_POINTER_DOWN:
-                aout << "(" << pointer.id << ", " << x << ", " << y << ") "
-                     << "Pointer Down";
+                //aout << "(" << pointer.id << ", " << x << ", " << y << ") "
+                //     << "Pointer Down";
                 break;
 
             case AMOTION_EVENT_ACTION_CANCEL:
@@ -326,8 +326,8 @@ void Renderer::handleInput() {
                 // code pass through on purpose.
             case AMOTION_EVENT_ACTION_UP:
             case AMOTION_EVENT_ACTION_POINTER_UP:
-                aout << "(" << pointer.id << ", " << x << ", " << y << ") "
-                     << "Pointer Up";
+                //aout << "(" << pointer.id << ", " << x << ", " << y << ") "
+                //     << "Pointer Up";
                 break;
 
             case AMOTION_EVENT_ACTION_MOVE:
@@ -338,17 +338,17 @@ void Renderer::handleInput() {
                     pointer = motionEvent.pointers[index];
                     x = GameActivityPointerAxes_getX(&pointer);
                     y = GameActivityPointerAxes_getY(&pointer);
-                    aout << "(" << pointer.id << ", " << x << ", " << y << ")";
+                    //aout << "(" << pointer.id << ", " << x << ", " << y << ")";
 
-                    if (index != (motionEvent.pointerCount - 1)) aout << ",";
-                    aout << " ";
+                    if (index != (motionEvent.pointerCount - 1)) ;//aout << ",";
+                    //aout << " ";
                 }
-                aout << "Pointer Move";
+                //aout << "Pointer Move";
                 break;
             default:
-                aout << "Unknown MotionEvent Action: " << action;
+                //aout << "Unknown MotionEvent Action: " << action;
         }
-        aout << std::endl;
+        //aout << std::endl;
     }
     // clear the motion input count in this buffer for main thread to re-use.
     android_app_clear_motion_events(inputBuffer);
@@ -356,22 +356,22 @@ void Renderer::handleInput() {
     // handle input key events.
     for (auto i = 0; i < inputBuffer->keyEventsCount; i++) {
         auto &keyEvent = inputBuffer->keyEvents[i];
-        aout << "Key: " << keyEvent.keyCode <<" ";
+        //aout << "Key: " << keyEvent.keyCode <<" ";
         switch (keyEvent.action) {
             case AKEY_EVENT_ACTION_DOWN:
-                aout << "Key Down";
+                //aout << "Key Down";
                 break;
             case AKEY_EVENT_ACTION_UP:
-                aout << "Key Up";
+                //aout << "Key Up";
                 break;
             case AKEY_EVENT_ACTION_MULTIPLE:
                 // Deprecated since Android API level 29.
-                aout << "Multiple Key Actions";
+                //aout << "Multiple Key Actions";
                 break;
             default:
-                aout << "Unknown KeyEvent Action: " << keyEvent.action;
+                //aout << "Unknown KeyEvent Action: " << keyEvent.action;
         }
-        aout << std::endl;
+        //aout << std::endl;
     }
     // clear the key input count too.
     android_app_clear_key_events(inputBuffer);

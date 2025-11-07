@@ -22,6 +22,9 @@ android {
                 cppFlags += "-std=c++17"
             }
         }
+        buildFeatures {
+            prefab = true
+        }
     }
 
     buildTypes {
@@ -59,4 +62,6 @@ dependencies {
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
+
+    implementation(project(":siv3d"))
 }
