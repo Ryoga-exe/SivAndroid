@@ -41,9 +41,8 @@ android {
         prefabPublishing = true
     }
     prefab {
-        create("siv3d") {
+        create("Siv3D") {
             headers = "../../Siv3D/include"
-//            libraryName = "siv3d"
         }
     }
     compileOptions {

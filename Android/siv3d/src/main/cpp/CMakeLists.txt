@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 3.22.1)
 
-project(siv3d
+project(OpenSiv3D_Android
         VERSION 0.6.16
         LANGUAGES CXX C ASM
         HOMEPAGE_URL "https://github.com/Siv3D/OpenSiv3D"
@@ -1287,7 +1287,7 @@ set(SIV3D_INTERNAL_INCLUDE_DIRS
 #        ${Boost_INCLUDE_DIRS}
 )
 
-add_library(siv3d STATIC ${SIV3D_INTERNAL_SOURCES})
+add_library(Siv3D STATIC ${SIV3D_INTERNAL_SOURCES})
 
 find_package(game-activity REQUIRED CONFIG)
 
@@ -1295,7 +1295,7 @@ find_package(game-activity REQUIRED CONFIG)
 set(CMAKE_SHARED_LINKER_FLAGS
         "${CMAKE_SHARED_LINKER_FLAGS} -u Java_com_google_androidgamesdk_GameActivity_initializeNativeCode")
 
-target_link_libraries(siv3d
+target_link_libraries(Siv3D
         game-activity::game-activity_static
         EGL
         GLESv3
