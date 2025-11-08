@@ -49,28 +49,28 @@
 # include <Siv3D/Types.hpp>
 
 // 前方宣言 | Forward declarations
-// # include <Siv3D/Fwd.hpp>
+# include <Siv3D/Fwd.hpp>
 //
 // // プレースホルダー | Place holder
 // # include <Siv3D/PlaceHolder.hpp>
 //
 // // コピー禁止 Mixin | Non-copyable mixin
-// # include <Siv3D/Uncopyable.hpp>
+# include <Siv3D/Uncopyable.hpp>
 //
 // // YesNo タグ | Yes/No tag
-// # include <Siv3D/YesNo.hpp>
+# include <Siv3D/YesNo.hpp>
 //
 // // 定義済み YesNo タグ | Predefined Yes/No tag
-// # include <Siv3D/PredefinedYesNo.hpp>
+# include <Siv3D/PredefinedYesNo.hpp>
 //
 // // 名前付き引数 | Named parameter
-// # include <Siv3D/NamedParameter.hpp>
+# include <Siv3D/NamedParameter.hpp>
 //
 // // 定義済み名前付き引数 | Predefined named parameters
-// # include <Siv3D/PredefinedNamedParameter.hpp>
+# include <Siv3D/PredefinedNamedParameter.hpp>
 //
 // // 範囲をインデックス値とセットで列挙するユーティリティー | Indexed iterator
-// # include <Siv3D/Indexed.hpp>
+# include <Siv3D/Indexed.hpp>
 //
 // // メタ関数 | Meta
 // # include <Siv3D/Meta.hpp>
@@ -502,10 +502,10 @@
 //////////////////////////////////////////////////
 
 // // ログ出力レベル | Log output level
-// # include <Siv3D/LogLevel.hpp>
+# include <Siv3D/LogLevel.hpp>
 //
 // // ログの種類 | Log type
-// # include <Siv3D/LogType.hpp>
+# include <Siv3D/LogType.hpp>
 //
 // // ロガー | Logger
 // # include <Siv3D/Logger.hpp>
@@ -523,7 +523,7 @@
 //////////////////////////////////////////////////
 
 // // 数学定数 | Math constants
-// # include <Siv3D/MathConstants.hpp>
+# include <Siv3D/MathConstants.hpp>
 //
 // // 数学関数 | Math functions
 // # include <Siv3D/Math.hpp>
