@@ -1,3 +1,9 @@
+# include <iostream>
+//# include <Siv3D/Common/Siv3DEngine.hpp>
+//# include <Siv3D/System/ISystem.hpp>
+//# include <Siv3D/Error.hpp>
+//# include <Siv3D/EngineLog.hpp>
+
 #include <jni.h>
 
 #include <game-activity/GameActivity.h>
@@ -9,6 +15,11 @@
 #include <sstream>
 
 void Main();
+
+namespace s3d::detail::init
+{
+
+}
 
 class AndroidOut : public std::stringbuf {
 public:
