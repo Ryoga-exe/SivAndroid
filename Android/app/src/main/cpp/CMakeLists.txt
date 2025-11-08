@@ -5,7 +5,7 @@ set(CMAKE_CXX_STANDARD 20)
 find_package(siv3d REQUIRED CONFIG)
 find_package(game-activity REQUIRED CONFIG)  # 明示しておくと安全
 
-add_library(test SHARED main.cpp)
+add_library(test SHARED Main.cpp)
 
 target_link_libraries(test PRIVATE
         siv3d::siv3d

@@ -19,6 +19,8 @@ dependencyResolutionManagement {
     }
 }
 
-rootProject.name = "Siv3D-Test"
+rootProject.name = "OpenSiv3D"
 include(":app")
 include(":siv3d")
+include(":Siv3D_Source")
+project(":Siv3D_Source").projectDir = file("../Siv3D")
